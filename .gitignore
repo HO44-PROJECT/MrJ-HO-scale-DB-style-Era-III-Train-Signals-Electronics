@@ -1,3 +1,5 @@
+*/signaux-backups/*
 */gerber
 */fp-info-cache
 */*.kicad_prl
+*/*backup*
