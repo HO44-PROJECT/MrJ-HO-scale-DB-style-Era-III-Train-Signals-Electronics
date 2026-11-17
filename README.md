@@ -29,6 +29,8 @@ This is what you will be able to build:
 **[Try the interactive 3D viewer](https://ho44-project.github.io/MrJ-HO-scale-DB-style-Era-III-Train-Signals-Electronics/documentation/prod/MrJ-DB-Era3-prod-viewer.html)**
 (production PCB; the [breadboard version](https://ho44-project.github.io/MrJ-HO-scale-DB-style-Era-III-Train-Signals-Electronics/documentation/breadboard/MrJ-DB-Era3-breadboard-viewer.html) is there too).
 Pick a signal, then an aspect: all LEDs off, all on, Hp0, Hp1...
+The 3D view also helps you **place the LEDs**: turn the board around and see which LED goes where, and which ones
+light for each aspect.
 
 The breadboard version, for the three signals (block, entry, exit):
 
@@ -52,6 +54,8 @@ If you only want to build the signals, order the production PCB. Order the bread
 
 The [images](images/) directory holds many pictures of the assembly (soldering with helpers, testing a signal,
 disassembly), of the design (board, details, parts) and of the finished block, entry and exit signals.
+The assembly pictures show the **procedure to follow**, in particular how to **use the jig**: a 3D printed part
+that holds the LEDs and the PCB in place while you solder them.
 
 # Resources
 
