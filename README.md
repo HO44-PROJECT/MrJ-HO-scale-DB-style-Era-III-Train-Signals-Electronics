@@ -4,7 +4,7 @@ This is my own project for building model railway HO scale (1:87) Deutsche Bunde
 
 This is part of a complete project involving:
 
-- 3D printing ([Maker World](https://makerworld.com/en/models/682526#profileId-611046))
+- 3D printing: the signal bodies, 3 faces ([Maker World](https://makerworld.com/en/models/682526-mrj-ho-scale-db-signals-era-iii-3x-faces))
 - Electronics (PCB design and soldering) ([github](https://github.com/HO44-PROJECT/MrJ-HO-scale-DB-style-Era-III-Train-Signals-Electronics))
 - Arduino code (demo, DCC and JMRI integration) ([github](https://github.com/HO44-PROJECT/MrJ-HO-scale-DB-style-Era-III-Train-Signals-Arduino-Demo-Code))
 
@@ -23,11 +23,14 @@ This project contains Kicad project files and gerber to build PCBs using 1.8mm L
 This PCB uses charlieplexing to reduce the number of wires. It is possible to build a block signal, input signal, or output signal with this PCB.
 I designed my own wiring path to avoid using the POV effect to light multiple LEDs. Each situation for each signal is a simple combination of HIGH and LOW signals on all 4 pins.
 
-It's possible to reduce the number of wires for the "Block Signal" (only 2 wires required) and the "Entry Signal" (only 3 wires required). See [documentation/] (documentation/)
+It's possible to reduce the number of wires for the "Block Signal" (only 2 wires required) and the "Entry Signal" (only 3 wires required). See [documentation](documentation/).
 
 I also need a special breadboard version to ease tests. This version allows soldering of resistors.
 
-The **gerber.zip** files are enough to build the PCB from a manufacturer such as [jlcpcb](https://jlcpcb.com/). See [release/] (release/) directory.
+The **gerber.zip** files are enough to build the PCB from a manufacturer such as [jlcpcb](https://jlcpcb.com/). See the [release](release/) directory.
+
+The PCB is designed to fit inside the 3D printed signals: see the
+[3D model on Maker World](https://makerworld.com/en/models/682526-mrj-ho-scale-db-signals-era-iii-3x-faces).
 
 # History
 
@@ -36,11 +39,21 @@ It solves the "shunting signal" Hp0 + Sh1 did not work because the right white L
 
 This v3 is a better version as it fixes a distributed current problem.
 
-# Source
+# Repository content
 
-The [source/] directory contains Kicad files
+| Directory | Content |
+|---|---|
+| [release](release/) | Gerber zips, ready to send to a PCB manufacturer (production and breadboard boards). |
+| [source](source/) | KiCad 10 projects (schematic and PCB) of the two boards. |
+| [library](library/) | KiCad footprints, 3D models and drawings of the 1.8 mm LEDs. |
+| [documentation](documentation/) | Renders, interactive 3D viewers, and the wire levels (VCC / GND) for each signal aspect. |
+| [fritzing](fritzing/) | [Fritzing](https://fritzing.org) parts of the signals, to draw your circuit. |
+
+The 3D printed signals themselves are on [Maker World](https://makerworld.com/en/models/682526-mrj-ho-scale-db-signals-era-iii-3x-faces).
+
+The interactive viewers in [documentation](documentation/) must be served over http (for example from GitHub Pages).
 
 # BOM:
 * a PCB per signal. I ordered mine 0.8mm thickness from jlcpcb.com simply by uploading the gerber.zip file.
-* 2 to 4 60 to 100 ohm resistors 1/4 W from everywhere
+* 2 to 4 resistors 1/4 W from everywhere: 470 ohm for a 3.3 V supply, 1 kohm for a 5 V supply
 * 1.8mm LEDs. I bought mine from aliexpress.com.

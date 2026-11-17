@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MrJ DB Signals Era III - 3D viewer (production PCB, solder wires)</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<style>
+body{margin:0;font-family:system-ui;background:#1e2227;color:#eee}
+h1{margin:0;padding:10px 12px 0;font-size:18px;font-weight:600}
+model-viewer{width:100vw;height:80vh;--poster-color:transparent}
+nav{display:flex;gap:8px;padding:8px 10px 0;flex-wrap:wrap}
+button{padding:8px 14px;border:0;border-radius:6px;background:#394350;color:#eee;font-size:15px;cursor:pointer}
+#fam button{background:#2b5d8f}
+button.on{background:#2f9e5b}
+</style></head><body>
+<h1>MrJ DB Signals Era III - 3D viewer (production PCB, solder wires)</h1>
+<p id="note" style="display:none;margin:8px 12px;padding:8px 12px;background:#7a3b1d;border-radius:6px">This page loads its 3D models on demand and must be served over http (GitHub Pages, or <code>python3 -m http.server</code> in the folder). Opened as a local file it cannot show them: use the standalone version instead.</p><script>if(location.protocol==='file:')document.getElementById('note').style.display='block'</script><nav id="fam"></nav><nav id="asp"></nav>
+<model-viewer id="mv" camera-controls touch-action="pan-y" shadow-intensity="0"
+ exposure="1.1" camera-orbit="-30deg 55deg auto" min-camera-orbit="auto 0deg auto"></model-viewer>
+<script>
+const D={"bloc": {"All off": "bloc/glb/MrJ-DB-Era3-prod-bloc-off.glb", "All on": "bloc/glb/MrJ-DB-Era3-prod-bloc.glb", "Hp0": "bloc/glb/MrJ-DB-Era3-prod-bloc-Hp0.glb", "Hp1": "bloc/glb/MrJ-DB-Era3-prod-bloc-Hp1.glb", "test-w1w2": "bloc/glb/MrJ-DB-Era3-prod-bloc-test-w1w2.glb", "test-w3w4": "bloc/glb/MrJ-DB-Era3-prod-bloc-test-w3w4.glb"}, "entry": {"All off": "entry/glb/MrJ-DB-Era3-prod-entry-off.glb", "All on": "entry/glb/MrJ-DB-Era3-prod-entry.glb", "Hp0": "entry/glb/MrJ-DB-Era3-prod-entry-Hp0.glb", "Hp1": "entry/glb/MrJ-DB-Era3-prod-entry-Hp1.glb", "Hp2": "entry/glb/MrJ-DB-Era3-prod-entry-Hp2.glb", "test-w1": "entry/glb/MrJ-DB-Era3-prod-entry-test-w1.glb", "test-w3": "entry/glb/MrJ-DB-Era3-prod-entry-test-w3.glb", "test-w4": "entry/glb/MrJ-DB-Era3-prod-entry-test-w4.glb"}, "exit": {"All off": "exit/glb/MrJ-DB-Era3-prod-exit-off.glb", "All on": "exit/glb/MrJ-DB-Era3-prod-exit.glb", "Hp0+Sh1": "exit/glb/MrJ-DB-Era3-prod-exit-Hp0+Sh1.glb", "Hp0": "exit/glb/MrJ-DB-Era3-prod-exit-Hp0.glb", "Hp1": "exit/glb/MrJ-DB-Era3-prod-exit-Hp1.glb", "Hp2": "exit/glb/MrJ-DB-Era3-prod-exit-Hp2.glb", "test-w1": "exit/glb/MrJ-DB-Era3-prod-exit-test-w1.glb", "test-w2": "exit/glb/MrJ-DB-Era3-prod-exit-test-w2.glb", "test-w3": "exit/glb/MrJ-DB-Era3-prod-exit-test-w3.glb", "test-w4": "exit/glb/MrJ-DB-Era3-prod-exit-test-w4.glb"}}, mv=document.getElementById('mv');
+const fam=document.getElementById('fam'), asp=document.getElementById('asp');
+function pick(box,btn){[...box.children].forEach(x=>x.classList.remove('on'));btn.classList.add('on')}
+function showFamily(f,btn){
+  pick(fam,btn); asp.innerHTML='';
+  Object.keys(D[f]).forEach((a,i)=>{
+    const b=document.createElement('button'); b.textContent=a;
+    b.onclick=()=>{mv.src=D[f][a]; pick(asp,b)}; asp.appendChild(b); if(!i) b.click();
+  });
+}
+Object.keys(D).forEach((f,i)=>{
+  const b=document.createElement('button'); b.textContent=f;
+  b.onclick=()=>showFamily(f,b); fam.appendChild(b); if(!i) b.click();
+});
+</script></body></html>
