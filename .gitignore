@@ -3,4 +3,7 @@
 */fp-info-cache
 */*.kicad_prl
 */*backup*
-source/*
+local/
+build/
+Makefile
+tools/
